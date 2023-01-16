@@ -24,6 +24,8 @@
                                         <div class="bg-@travel.Color">
                                             <h5 class="card-title ">@travel.Name</h5>
                                         </div>
+                                        <a class="btn btn-warning btn-sm" href="@Url.Action("Update", "Travel", new { id = travel.Id })">
+                            </a>
                                         <a href="@Url.Action("Dettagli", "Travel", new { id = travel.Id })" class="btn btn-primary">Dettagli</a>
                                         <form asp-controller="Travel" asp-action="Delete" asp-route-id="@travel.Id" method="post">
                                     @Html.AntiForgeryToken()

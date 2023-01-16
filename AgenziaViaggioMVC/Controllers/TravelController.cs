@@ -14,6 +14,14 @@ namespace AgenziaViaggioMVC.Controllers
                 return View("Index", tours);
             }
         }
+        public IActionResult Info()
+        {
+            using (TravelContext db = new TravelContext())
+            {
+                List<Travel> tours = db.Travels.ToList<Travel>();
+                return View("Info", tours);
+            }
+        }
         [HttpGet]
         public IActionResult Add()
         {
