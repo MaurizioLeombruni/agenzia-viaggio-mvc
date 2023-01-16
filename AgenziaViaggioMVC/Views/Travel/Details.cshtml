@@ -13,10 +13,6 @@
     <strong>Nome del viaggio:</strong>
     <p class="fw-light">@Model.Name</p>
 
-    <strong>Foto del viaggio:</strong>
-    <img src="@Model.ImageUrl" class="img-fluid" alt="Immagine del viaggio">
-
-    <br />
     <strong>Descrizione del viaggio:</strong>
     <p class="fw-light">@Model.Description</p>
 
@@ -28,6 +24,9 @@
 
     <strong>Prezzo del viaggio:</strong>
     <p class="fw-light">@Model.Price€/person</p>
+
+    <strong>Foto del viaggio:</strong>
+    <img src="@Model.ImageUrl" class="img-fluid" alt="Immagine del viaggio">
 
     <a><button type="button" class="btn btn-primary" asp-controller="Home" asp-action="Index">Ritorna al menù viaggi</button></a>
 </div>
