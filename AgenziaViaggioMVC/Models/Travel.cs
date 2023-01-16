@@ -21,20 +21,24 @@ namespace AgenziaViaggioMVC.Models
         public string? Description { get; set; }
 
         [Column(TypeName = "tinyint")]
-        [Range(0, 255, ErrorMessage = "Input value for [Days] is not valid. (0-255)")]
+        [Range(1, 255, ErrorMessage = "Input value for [Days] is not valid. (1-255)")]
         public int? Days { get; set; }
 
         [Column(TypeName = "tinyint")]
-        [Range(0, 255, ErrorMessage = "Input value for [Destinations] is not valid. (0-255)")]
+        [Range(1, 255, ErrorMessage = "Input value for [Destinations] is not valid. (1-255)")]
         public int? Destinations { get; set; }
 
         [Column(TypeName = "smallint")]
-        [Range(0, 255, ErrorMessage = "Input value for [Price] is not valid. (0-32768)")]
+        [Range(1, 255, ErrorMessage = "Input value for [Price] is not valid. (1-32768)")]
         public int? Price { get; set; }
+
+        [Column(TypeName = "varchar(20)")]
+        [StringLength(20, ErrorMessage = "Input for Color not valid.")]
+        public string? Color { get; set; }
 
         public Travel() { }
 
-        public Travel(int id, string? imageUrl, string? name, string? description, int? days, int? destinations, int? price)
+        public Travel(int id, string? imageUrl, string? name, string? description, int? days, int? destinations, int? price, string? color)
         {
             Id = id;
             ImageUrl = imageUrl;
@@ -43,6 +47,7 @@ namespace AgenziaViaggioMVC.Models
             Days = days;
             Destinations = destinations;
             Price = price;
+            Color = color;
         }
     }
 }
