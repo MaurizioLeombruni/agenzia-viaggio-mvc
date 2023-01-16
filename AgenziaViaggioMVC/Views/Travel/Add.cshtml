@@ -1,3 +1,47 @@
-﻿<div class="text-center">
-    <h1 class="display-4">Qui il form di inserimento dati come nella pizzeria</h1>
+@model Travel
+
+<div class="container">
+    <h2><u>Compila il form per aggiungere un nuovo viaggio</u></h2>
+
+    <form asp-controller="Travel" asp-action="Add" method="post">
+        @Html.AntiForgeryToken()
+
+        <div class="mb-3">
+            <label class="form-label fw-bolder">Nome del viaggio:</label>
+            <input asp-for="Name" type="text" class="form-control"/>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label fw-bolder">Descrizione del viaggio:</label>
+            <textarea asp-for="Description" rows="10" class="d-block w-100"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+            <label class="form-label fw-bolder">Url dell'immagine:</label>
+            <input asp-for="ImageUrl" type="text" class="form-control" />
+            <span asp-validation-for="ImageUrl" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+            <label class="form-label fw-bolder">Numero di giorni:</label>
+            <input asp-for="Days" type="text" class="form-control" />
+            <span asp-validation-for="Days" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+            <label class="form-label fw-bolder">Numero di destinazioni:</label>
+            <input asp-for="Destinations" type="text" class="form-control" />
+            <span asp-validation-for="Destinations" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3 form-check">
+            <label class="form-label fw-bolder">Prezzo del viaggio (€):</label>
+            <input asp-for="Price" type="text" class="form-control" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Aggiungi</button>
+    </form>
 </div>

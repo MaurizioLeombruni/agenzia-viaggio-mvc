@@ -1,0 +1,32 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Travel
+
+<div class="container">
+
+    <h1>Dettagli del viaggio</h1>
+
+    <strong>Nome del viaggio:</strong>
+    <p class="fw-light">@Model.Name</p>
+
+    <strong>Foto del viaggio:</strong>
+    <img src="@Model.ImageUrl" class="img-fluid" alt="Immagine del viaggio" width="500" height="500">
+
+    <strong>Descrizione del viaggio:</strong>
+    <p class="fw-light">@Model.Description</p>
+
+    <strong>Numero di giorni del viaggio:</strong>
+    <p class="fw-light">@Model.Days days</p>
+
+    <strong>Numero di destinazioni del viaggio:</strong>
+    <p class="fw-light">@Model.Destinations destinations</p>
+
+    <strong>Prezzo del viaggio:</strong>
+    <p class="fw-light">@Model.Price€/person</p>
+
+    <a><button type="button" class="btn btn-primary" asp-controller="Home" asp-action="Index">Ritorna al menù viaggi</button></a>
+</div>
