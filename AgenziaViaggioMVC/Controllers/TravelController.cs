@@ -46,6 +46,28 @@ namespace AgenziaViaggioMVC.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult Details(int id)
+        {
+
+
+
+            using (TravelContext db = new TravelContext())
+            {
+                Travel dettagli = db.Travels
+                    .Where(tours => tours.Id == id)
+                    .FirstOrDefault();
+
+
+                if (dettagli != null)
+                {
+                    return View(dettagli);
+                }
+
+                return NotFound("l'id non corrisponde!");
+
+            }
+
+        }
 
         [HttpGet]
         public IActionResult Update(int id)
