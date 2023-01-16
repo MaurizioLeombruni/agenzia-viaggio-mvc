@@ -56,9 +56,44 @@ namespace AgenziaViaggioMVC.Controllers
 
         }
 
-       
 
-        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Travel form)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View("Update", form);
+            }
+
+            using (TravelContext db = new TravelContext())
+            {
+                Travel update = db.Travels.Where(tours => tours.Id == form.Id).FirstOrDefault();
+
+                if (update != null)
+                {
+                    update.Name = form.Name;
+                    update.Description = form.Description;
+                    update.ImageUrl = form.ImageUrl;
+                    update.Price = form.Price;
+                    update.Days = form.Days;
+                    update.Destinations = form.Destinations;
+
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound("Il post che volevi modificare non è stato trovato!");
+                }
+            }
+
+        }
+
+
+
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Delete(int id)
