@@ -15,10 +15,24 @@ namespace AgenziaViaggioMVC.Controllers
             }
         }
 
-        public IActionResult Add()
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Add(Travel form)
         {
-            return View();
+            if (!ModelState.IsValid)
+            {
+                return View("Add", form);
+            }
+
+            using (TravelContext db = new TravelContext())
+            {
+                db.Travels.Add(form);
+                db.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
         }
+
 
         public IActionResult Update()
         {
