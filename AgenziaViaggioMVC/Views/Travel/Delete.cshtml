@@ -1,3 +1,26 @@
-﻿<div class="text-center">
-    <h1 class="display-4">Qui con un foreach stampiamo tutte le card con solo immagine e nome e una X per cancellare la card dal Database</h1>
-</div>
+﻿@model List<Travel>
+
+    @if(Model.Count == 0)
+{
+    <h3>Non ci sono viaggi disponibili!</h3>
+   
+} else 
+{
+@foreach (Travel travel in Model)
+{
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="@travel.ImageUrl" alt="Card image cap">
+          <div class="card-body">
+              <div class="bg-@travel.Color">
+                  <h5 class="card-title ">@travel.Name</h5>
+              </div>
+              <a href="@Url.Action("Dettagli", "Travel", new { id = travel.Id })" class="btn btn-primary">Dettagli</a>
+                <form asp-controller="Travel" asp-action="Delete" asp-route-id="@travel.Id" method="post">
+                    @Html.AntiForgeryToken()
+                    <a href="#" class="btn btn-danger">Cancella</a>
+                </form>
+          </div>
+        </div>
+                
+}
+}
