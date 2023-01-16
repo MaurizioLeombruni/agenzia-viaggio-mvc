@@ -14,6 +14,11 @@ namespace AgenziaViaggioMVC.Controllers
                 return View("Index", tours);
             }
         }
+        [HttpGet]
+        public IActionResult Add()
+        {
+            return View("Add");
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
