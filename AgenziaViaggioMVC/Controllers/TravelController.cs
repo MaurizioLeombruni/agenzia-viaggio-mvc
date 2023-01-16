@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AgenziaViaggioMVC.Database;
+using AgenziaViaggioMVC.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace AgenziaViaggioMVC.Controllers
 {
@@ -6,7 +8,11 @@ namespace AgenziaViaggioMVC.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            using (TravelContext db = new TravelContext())
+            {
+                List<Travel> tours = db.Travels.ToList<Travel>();
+                return View("Index", tours);
+            }
         }
 
         public IActionResult Add()
