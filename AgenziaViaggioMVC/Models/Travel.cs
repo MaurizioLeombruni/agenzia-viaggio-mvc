@@ -29,7 +29,7 @@ namespace AgenziaViaggioMVC.Models
         public int? Destinations { get; set; }
 
         [Column(TypeName = "smallint")]
-        [Range(1, 255, ErrorMessage = "Input value for [Price] is not valid. (1-32768)")]
+        [Range(1, 32768, ErrorMessage = "Input value for [Price] is not valid. (1-32768)")]
         public int? Price { get; set; }
 
         [Column(TypeName = "varchar(20)")]
