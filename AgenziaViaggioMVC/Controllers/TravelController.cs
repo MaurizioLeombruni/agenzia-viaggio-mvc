@@ -39,16 +39,49 @@ namespace AgenziaViaggioMVC.Controllers
         }
 
 
-        public IActionResult Update()
+        [HttpGet]
+        public IActionResult Update(int id)
         {
-            return View();
+            using (TravelContext db = new TravelContext())
+            {
+                Travel update = db.Travels.Where(tours => tours.Id == id).FirstOrDefault();
+
+                if (update == null)
+                {
+                    return NotFound("Il post non è stato trovato");
+                }
+
+                return View("Update", update);
+            }
+
         }
 
-        public IActionResult Delete()
+       
+
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int id)
         {
-            return View();
+            using (TravelContext db = new TravelContext())
+            {
+                Travel delete = db.Travels.Where(tours => tours.Id == id).FirstOrDefault();
+
+                if (delete != null)
+                {
+                    db.Travels.Remove(delete);
+                    db.SaveChanges();
+
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    return NotFound("Il post da eliminare non è stato trovato!");
+                }
+            }
         }
-
-
     }
+
+
 }
+
